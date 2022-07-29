@@ -12,9 +12,7 @@ def webapp_style():
                             background-color: white;
                             text-decoration: underline;
                             }
-                    h1 {
-                        background-color: #3fb0ac;
-                        }
+                   
                     #MainMenu {
                                 visibility: none;
                                 }
@@ -26,7 +24,7 @@ def webapp_style():
                             visibility: hidden;
                             }
                     footer:after {
-                                content:'Made by Sourabh Rasal ❤'; 
+                                content:'Made by Varshini❤'; 
                                 visibility: visible;
                                 display: block;
                                 position: relative;
