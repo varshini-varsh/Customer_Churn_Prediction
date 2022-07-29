@@ -13,30 +13,28 @@ st.set_page_config(
     initial_sidebar_state="expanded")
 
 # Title for the app
-image = Image.open('data/customer.png')
-col1, mid, col2 = st.beta_columns([1, 5, 25])
+image = Image.open('data/c2.jpg')
+col1, mid, col2 = st.columns([1, 5, 25])
 with col1:
-    st.image(image, channels="BGR", width = 150)
+    st.image(image, channels="BGR", width = 250)
+with mid:
+    st.write(' ')
 with col2:
-    st.title("""
-                # Customer Churn Prediction App
-                This app predicts if the customer will churn or not.\n
-                Data obtained from the Kaggle - [Telco Customer Churn](https://www.kaggle.com/blastchar/telco-customer-churn)
-                """)
+    st.markdown("<h1 style='text-align: center; color: black;'>Customer churn prediction web app</h1>", unsafe_allow_html=True)
 
-# Sidebar
 st.sidebar.header('User Input Features')
-st.sidebar.markdown('[Example CSV Input file](https://github.com/SourabhR23/teleco-churn-webapp/blob/master/Telecom'
+st.sidebar.markdown('[Example CSV Input file](https://github.com/varshini-varsh/Customer_Churn_Prediction/blob/master/Telecom'
                     '/churn_example.csv)')
 
 # Collect user input features into dataframe
 # Upload the CSV file
+st.sidebar.header('1. Upload CSV file')
 uploaded_file = st.sidebar.file_uploader('Upload your input CSV file', type=['csv'])
 if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 else:
     # Enter manually
-    st.sidebar.write('Enter the data manually')
+    st.sidebar.header('2. Enter the data manually')
     input_df = user_input_features()
 
 # Combining the user input features with entire churn dataset
@@ -58,8 +56,11 @@ for col in encode:
 df = df[: 1]
 df['TotalCharges'] = pd.to_numeric(df['TotalCharges'])
 
+st.write("")
+st.write("")
+st.write("")
 # Displays the user input features
-st.subheader('# User Input features')
+st.subheader('Feature summary')
 if uploaded_file:
     st.write(input_df)
 else:
@@ -72,8 +73,7 @@ else:
 load_clf = pickle.load(open('Model/modelForPrediction.sav', 'rb'))
 
 # Apply model on the prediction
-st.subheader('# Prediction')
-st.write('Hit "Predict" button to run the app!')
+st.subheader('Predict')
 predict = st.button('Predict')
 if predict:
     # predictions
