@@ -8,7 +8,7 @@ from PIL import Image
 
 # Web Page configuration
 st.set_page_config(
-    page_title="Customer Churn Web-App",
+    page_title="Customer Churn Prediction Web App",
     layout="wide",
     initial_sidebar_state="expanded")
 
@@ -73,7 +73,6 @@ else:
 load_clf = pickle.load(open('Model/modelForPrediction.sav', 'rb'))
 
 # Apply model on the prediction
-st.subheader('Predict')
 predict = st.button('Predict')
 if predict:
     # predictions
