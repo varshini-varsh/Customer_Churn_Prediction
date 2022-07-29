@@ -14,13 +14,8 @@ st.set_page_config(
 
 # Title for the app
 image = Image.open('data/c2.jpg')
-col1, mid, col2 = st.columns([1, 5, 25])
-with col1:
-    st.image(image, channels="BGR", width = 250)
-with mid:
-    st.write(' ')
-with col2:
-    st.markdown("<h1 style='text-align: center; color: black;'>Customer churn prediction web app</h1>", unsafe_allow_html=True)
+st.image(image)
+st.markdown("<h1 style='text-align: center; color: black;'>Customer Churn Prediction Web App</h1>", unsafe_allow_html=True)
 
 st.sidebar.header('User Input Features')
 st.sidebar.markdown('[Example CSV Input file](https://github.com/varshini-varsh/Customer_Churn_Prediction/blob/master/Telecom'
@@ -64,7 +59,6 @@ st.subheader('Feature summary')
 if uploaded_file:
     st.write(input_df)
 else:
-    st.write('Awaiting CSV file to be uploaded. Currently using below example.')
     st.write(input_df.iloc[:, :7])
     st.write(input_df.iloc[:, 7: 15])
     st.write(input_df.iloc[:, 15:])
